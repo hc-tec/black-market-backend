@@ -15,7 +15,7 @@
   * 运行命令 redis-server.exe redis.windows.conf
 * 删除apps所有目录下的 migrations 目录 (注意!)
 * 执行数据库迁移（如果失败，应该要手动先创建一个数据库，数据库名为 SecondaryMarket，接着再执行以下命令）
-  * python manage.py make migrations
+  * python manage.py makemigrations 
   * python manage.py migrate
 * 开启服务器
   * python manage.py runserver 8001
