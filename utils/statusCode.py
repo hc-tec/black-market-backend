@@ -237,6 +237,9 @@ class FriendDetails:
     Error = Error(1506, "FriendDetails Get Error")
     Success = Success(2506, "FriendDetails Get Success")
 
+class SuggestTags:
+    Error = Error(1506, "SuggestTags Get Error")
+    Success = Success(2506, "SuggestTags Get Success")
 
 '''
  --- titto end ---

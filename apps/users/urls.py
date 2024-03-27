@@ -20,7 +20,8 @@ urlpatterns = [
     path('exit/', Exit.as_view()),
     path('logout/', Logout.as_view()),
     path('getUserinfo/', GetUserInfo.as_view()),
-    path('goodsView/', GoodsView.as_view()),
+    path('goodsView/', GoodsView.as_view()),  # 获取商品列表
+    path('goodsUploadAndUpdate/', GoodsUploadAndUpdateView.as_view()),  # 上传、更新商品
     path('threadView/', ThreadView.as_view()),
     path('getEmailCode/', GetEmailCode.as_view()),
     path('wantedUser/', WantedUser.as_view()),
@@ -38,9 +39,11 @@ urlpatterns = [
     path('threadAuditView/', ThreadAuditView.as_view()),  # 帖子审核接口
     path('dealView/', DealView.as_view()),
     path("goodReportView/", GoodReportView.as_view()),  # 商品举报接口
+    path('suggestTagsView/', SuggestTagsView.as_view()),  # 给商品打上建议的标签
 
     path('FriendView', FriendView.as_view()),
     path('FriendDetails', FriendDetails.as_view()),
     path('ChatMessage', ChatMessage.as_view()),
     path('ChatUserSearch', search_view.ChatUserSearch.as_view()),
+
 ]

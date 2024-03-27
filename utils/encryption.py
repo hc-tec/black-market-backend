@@ -55,7 +55,8 @@ def creat_verification_code():
     生成验证码
     :return: 6位验证码
     """
-    ctime = str(time.time())
-    m = hashlib.md5(bytes(str(random.randint(100000, 999999)), encoding="utf-8"))
-    m.update(bytes(ctime, encoding="utf-8"))
-    return m.hexdigest()[0:6]
+    ret = ""
+    for i in range(6):
+        num = random.randint(0, 9)
+        ret += str(num)
+    return ret

@@ -35,17 +35,18 @@ class Register(APIView):
         # 将数据放入字典
         user_data = dict()
         user_data["user_name"] = request.data["user_name"]
-        user_data["student_id"] = request.data["student_id"]
+        # user_data["student_id"] = request.data["student_id"]
         user_data["password"] = sha256(request.data["password"])
-        user_data["qq"] = request.data["qq"]
+        # user_data["email"] = request.data["email"]
+        # user_data["contact"] = request.data["contact"]
         user_data["school_zone"] = request.data["school_zone"]
-        user_data["profile"] = request.data["profile"]
+        # user_data["profile"] = request.data["profile"]
         user_data["avatar"] = request.data["avatar"]
-        ver_code = request.data["ver_code"]
+        # ver_code = request.data["ver_code"]
         # 进行邮箱验证, 先调用邮箱认证接口获取验证码
-        self.is_valid(email=user_data["qq"] + "@qq.com", ver_code=ver_code)
+        # self.is_valid(email=user_data["email"], ver_code=ver_code)
         # 判断用户是否已注册
-        obj = UserInfo.objects.filter(student_id=user_data["student_id"], qq=user_data["qq"])
+        obj = UserInfo.objects.filter(student_id=user_data["student_id"])
         assert not obj, "用户已注册"
         ser = RegisterSerializer(data=request.data)
         if ser.is_valid():
@@ -80,7 +81,8 @@ class WeChatRegister(APIView):
         user_data["user_name"] = request.data["user_name"]
         user_data["student_id"] = request.data["student_id"]
         user_data["password"] = sha256(request.data["password"])
-        user_data["qq"] = request.data["qq"]
+        user_data["email"] = request.data["email"]
+        user_data["contact"] = request.data["contact"]
         user_data["school_zone"] = request.data["school_zone"]
         user_data["profile"] = request.data["profile"]
         user_data["avatar"] = request.data["avatar"]
@@ -89,10 +91,9 @@ class WeChatRegister(APIView):
         ver_code = request.data["ver_code"]
         # openid = "123456"
         # 进行邮箱验证, 先调用邮箱认证接口获取验证码
-        self.is_valid(email=user_data["qq"] + "@qq.com", ver_code=ver_code)
+        self.is_valid(email=user_data["email"], ver_code=ver_code)
         # 判断用户是否已注册
-        obj = UserInfo.objects.filter(student_id=user_data["student_id"], qq=user_data["qq"],
-                                      password=user_data["password"])
+        obj = UserInfo.objects.filter(student_id=user_data["student_id"])
         assert not obj, "用户已注册"
         ser = RegisterSerializer(data=request.data)
         if ser.is_valid():

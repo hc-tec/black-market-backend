@@ -25,10 +25,10 @@ class Login(APIView):
     @validData(statusCode.Login)
     def post(self, request, *args, **kwargs):
         user_data = dict()
-        user_data["user_name"] = request.data["user_name"]
+        user_data["student_id"] = request.data["student_id"]
         user_data["password"] = sha256(request.data["password"])
         user_obj = UserInfo.objects.filter(**user_data).first()
-        assert user_obj, "用户名或密码错误"
+        assert user_obj, "学号或密码错误"
         request.session['user'] = {"pk": user_obj.pk}
         ser = UserInfoSerializer(instance=user_obj, many=False)
         return ser.data

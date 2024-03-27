@@ -18,7 +18,7 @@ from utils.pagination import ThreadCommentPagination
 class ThreadCommentView(ListAPIView):
     serializer_class = ThreadCommentSerializer
     pagination_class = ThreadCommentPagination
-
+    authentication_classes = []
     def get_serializer_context(self):
         return {
             "user": self.request.user

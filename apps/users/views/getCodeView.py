@@ -21,11 +21,11 @@ class GetCode(APIView):
         verification_code = creat_verification_code()
         cache.set(user_obj.pk, verification_code, 300)  # 该值的有效期为300s
         # 发送验证码
-        qq = user_obj.qq
-        email_sender = SendEmail(email_name="小黑市")
+        email = user_obj.email
+        email_sender = SendEmail(email_name="华科二手市场")
         email_sender.send(
-            receiver_list=[user_obj.qq + "@qq.com", ],
-            email_text="【小黑市】您的验证码为" + verification_code + "(5分钟有效，如非本人操作，请忽略。)",
+            receiver_list=[email],
+            email_text="【华科二手市场】您的验证码为" + verification_code + "(5分钟有效，如非本人操作，请忽略。)",
             receiver_name=user_obj.user_name
         )
         # 记得退出
@@ -45,7 +45,7 @@ class GetEmailCode(APIView):
         :param kwargs:
         :return:
         """
-        email = request.data["qq"] + "@qq.com"
+        email = request.data["email"]
         # 生成验证码存储到Redis并设置有效期# 使用配置的redis数据库的别名，创建连接到redis的对象
         verification_code = creat_verification_code()
         cache.set(email, verification_code, 300)  # 该值的有效期为300s
@@ -53,7 +53,7 @@ class GetEmailCode(APIView):
         email_sender = SendEmail(email_name="华科二手市场")
         email_sender.send(
             receiver_list=[email, ],
-            email_text="【小黑市】您的验证码为" + verification_code + "(5分钟有效，如非本人操作，请忽略。)",
+            email_text="【华科二手市场】您的验证码为" + verification_code + "(5分钟有效，如非本人操作，请忽略。)",
             receiver_name=email
         )
         # 记得退出

@@ -38,7 +38,7 @@ class LoginOrRegister(APIView):
         # 判断用户是否已注册
         obj = UserInfo.objects.filter(email=user_data["email"])
         if obj:
-            user_obj = obj
+            user_obj = obj.first()
             assert user_obj, "邮箱错误"
             request.session['user'] = {"pk": user_obj.pk}
             ser = UserInfoSerializer(instance=user_obj, many=False)

@@ -10,7 +10,7 @@ from utils.HotCalculator import HotTopicSingleton
 class TopicView(ListAPIView):
 
     pagination_class = TopicPagination
-
+    authentication_classes = []
     def get_serializer_class(self):
         return {
             "all": TopicSerializer,

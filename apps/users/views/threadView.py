@@ -20,7 +20,7 @@ class ThreadView(ListAPIView):
     """
     下面三行代码用于帖子的获取
     """
-
+    authentication_classes = []
     pagination_class = ThreadPagination
     serializer_class = ThreadSerializer
 

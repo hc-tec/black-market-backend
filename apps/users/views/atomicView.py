@@ -2,7 +2,7 @@ from rest_framework.generics import (ListAPIView, CreateAPIView,
                                      DestroyAPIView, UpdateAPIView)
 
 from apps.users.models import Goods, UserInfo
-# from apps.users.models.goodsModel import Goods
+from apps.users.models.goodsModel import AUDIT_STATUS_ENUM
 from utils.pagination import (GoodsPagination, ThreadPagination)
 from utils.serializer import (ThreadSerializer, GoodSerializer)
 
@@ -12,7 +12,7 @@ class AtomicGoodsView(ListAPIView):
     serializer_class = GoodSerializer
 
     class Meta:
-        filters = ['sold_goods', 'purchase_goods', 'current_goods', 'favor_goods']
+        filters = ['sold_goods', 'purchase_goods', 'current_goods', 'favor_goods', 'unaudit_goods']
 
     def get_sold_goods(self):
         return self.request.user.goods_seller_set.filter(goods_is_sold=True)
@@ -25,6 +25,9 @@ class AtomicGoodsView(ListAPIView):
 
     def get_favor_goods(self):
         return self.request.user.goods_wanted_person_set.all()
+
+    def get_unaudit_goods(self):
+        return self.request.user.goods_seller_set.filter(flag=AUDIT_STATUS_ENUM.AUDITING)
 
     def get_queryset(self):
         filter_content = self.request.query_params.get('filter')

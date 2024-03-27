@@ -22,6 +22,7 @@ from .friendView import *
 from .friendDetailsView import *
 from .chatMessageView import *
 from .loginOrRegisterView import *
+from .suggestTagsView import *
 
 # 需导入以激活监听函数
 from . import chatMessageListen

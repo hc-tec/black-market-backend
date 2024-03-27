@@ -20,9 +20,14 @@ class RegisterSerializer(ModelSerializer):
     class Meta:
         model = UserInfo
         fields = ["student_id", "user_name", "password",
-                  "school_zone", "profile", "email"]
+                  "school_zone", "profile", "email", "contact"]
         extra_kwargs = {
-            "email": {"required": True}
+            "student_id": {"required": True},
+            "user_name": {"required": True},
+            "password": {"required": True},
+            "school_zone": {"required": True},
+            "email": {"required": True},
+            "contact": {"required": True},
         }
 
     def validate_student_id(self, value):
@@ -63,7 +68,7 @@ class UserInfoSerializer(ModelSerializer):
     class Meta:
         model = UserInfo
         fields = ["id", "student_id", "user_name", "avatar",
-                  "school_zone", "user_type", "profile", "email", "message_num", "txn_statistics",
+                  "school_zone", "user_type", "profile", "email", "contact", "message_num", "txn_statistics",
                   "commuca_statistics"]
 
     def get_message_num(self, row):
@@ -105,6 +110,7 @@ class GoodSerializer(ModelSerializer):
         result["school_zone"] = row.seller.get_school_zone_display()
         result["avatar"] = row.seller.avatar
         result["email"] = row.seller.email
+        result["contact"] = row.seller.contact
         return result
 
     def get_goodsInfo(self, row):

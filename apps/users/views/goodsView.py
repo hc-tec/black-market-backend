@@ -20,6 +20,7 @@ class GoodsView(ListAPIView):
     """
         获取 所有商品 | 某一用户售买的商品
     """
+    authentication_classes = []
     pagination_class = GoodsPagination
     serializer_class = GoodSerializer
 
@@ -84,6 +85,14 @@ class GoodsView(ListAPIView):
         # return goods.filter(goods_is_sold=is_sold, seller__school_zone=school_zone).order_by(
         #     "-goods_launch_time")
 
+
+class GoodsUploadAndUpdateView(ListAPIView):
+    """
+        上传更新所提供商品
+    """
+    pagination_class = GoodsPagination
+    serializer_class = GoodSerializer
+
     @validData(statusCode.GoodUpload)
     def post(self, request, *args, **kwargs):
         """
@@ -96,7 +105,7 @@ class GoodsView(ListAPIView):
             good_data["goods_title"] = request.data["goods_title"]
             good_data["goods_price"] = request.data["goods_price"]
             good_data["goods_desc"] = request.data["goods_desc"]
-            good_data["goods_area"] = request.data.get("goods_area", GOOD_AREA_ENUM.NORMAL_AREA)
+            # good_data["goods_area"] = request.data.get("goods_area", GOOD_AREA_ENUM.NORMAL_AREA)
             good_data["goods_type"] = request.data.get("goods_type", GOOD_TYPE_ENUM.OTHERS)
             goods_img = request.data["goods_img"]
             # 添加数据库事务
@@ -168,3 +177,4 @@ class GoodsView(ListAPIView):
             return ser.data
         except Exception as e:
             raise e
+

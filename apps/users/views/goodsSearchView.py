@@ -11,6 +11,7 @@ class GoodsSearch(ListAPIView):
     """
     serializer_class = GoodSerializer
     pagination_class = GoodsPagination
+    authentication_classes = []
 
     def get_serializer_context(self):
         return {
