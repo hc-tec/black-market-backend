@@ -38,14 +38,19 @@ class Register:
     Success = Success(2000, "Register Success")
 
 
+class Login:
+    Error = Error(1002, "Login Error")
+    Success = Success(2002, "Login Success")
+
+
 class WeChatRegister:
     Error = Error(1001, "WeChatRegister Error")
     Success = Success(2001, "WeChatRegister Success")
 
 
-class Login:
-    Error = Error(1002, "Login Error")
-    Success = Success(2002, "Login Success")
+class LoginOrRegister:
+    Error = Error(1000, "RegisterOrSuccess Error")
+    Success = Success(2000, "RegisterOrSuccess Success")
 
 
 class WeChatLogin:
@@ -127,17 +132,21 @@ class ThreadDelete:
     Error = Error(1018, "Thread Delete People Error")
     Success = Success(2018, "Thread Delete People Success")
 
+
 class DeleteAppreciateThread:
     Error = Error(1019, "AppreciateThread Delete People Error")
     Success = Success(2019, "AppreciateThread Delete People Success")
+
 
 class DeleteThreadComment:
     Error = Error(1020, "ThreadComment Delete People Error")
     Success = Success(2020, "ThreadComment Delete People Success")
 
+
 class GetTopic:
     Error = Error(1021, "Get Topic People Error")
     Success = Success(2021, "Get Topic Delete People Success")
+
 
 class StudentIdModify:
     Error = Error(1022, "StudentId Modify Error")
@@ -153,6 +162,7 @@ class ProfileModify:
     Error = Error(1024, "Profile Modify Error")
     Success = Success(2024, "Profile Modify Success")
 
+
 class DeleteAppreciateThreadComment:
     Error = Error(1024, "Delete Appreciate ThreadComment Error")
     Success = Success(2024, "Delete Appreciate ThreadComment Success")
@@ -162,33 +172,41 @@ class MessageDelete:
     Error = Error(1025, "Message Delete Error")
     Success = Success(2025, "Message Delete Success")
 
+
 class GoodSold:
     Error = Error(1026, "Good Sold Error")
     Success = Success(2026, "Good Sold Success")
+
 
 class GoodAudit:
     Error = Error(1027, "Good Audit Error")
     Success = Success(2027, "Good Audit Success")
 
+
 class ThreadAudit:
     Error = Error(1027, "Thread Audit Error")
     Success = Success(2027, "Thread Audit Success")
+
 
 class GoodReport:
     Error = Error(1028, "Good Report Error")
     Success = Success(2028, "Good Report Success")
 
+
 class ThreadReport:
     Error = Error(1029, "Thread Report Error")
     Success = Success(2029, "Thread Report Success")
+
 
 class CommentReport:
     Error = Error(1030, "Comment Report Error")
     Success = Success(2030, "Comment Report Success")
 
+
 '''
  --- titto start ---
 '''
+
 
 class ThreadCommentUpload:
     Error = Error(1500, "Thread Comment Upload Error")
@@ -199,21 +217,26 @@ class AppreciateThreadComment:
     Error = Error(1501, "Appreciate Thread Comment Error")
     Success = Success(2501, "Appreciate Thread Comment Success")
 
+
 class FriendApply:
     Error = Error(1503, "Friend Apply Error")
     Success = Success(2503, "Friend Apply Success")
+
 
 class DeleteFriend:
     Error = Error(1504, "Friend Delete Error")
     Success = Success(2504, "Friend Delete Success")
 
+
 class FriendApplyPass:
     Error = Error(1505, "Friend Apply Pass Error")
     Success = Success(2505, "Friend Apply Pass Success")
 
+
 class FriendDetails:
     Error = Error(1506, "FriendDetails Get Error")
     Success = Success(2506, "FriendDetails Get Success")
+
 
 '''
  --- titto end ---

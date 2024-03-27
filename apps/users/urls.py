@@ -5,6 +5,7 @@ from .views import *
 
 urlpatterns = [
     path('register/', Register.as_view()),
+    path('loginOrRegister/', LoginOrRegister.as_view()),
     path('wechatRegister/', WeChatRegister.as_view()),
     path('login/', Login.as_view()),
     path('wechatLogin/', WeChatLogin.as_view()),

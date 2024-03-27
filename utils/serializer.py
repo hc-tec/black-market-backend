@@ -20,13 +20,9 @@ class RegisterSerializer(ModelSerializer):
     class Meta:
         model = UserInfo
         fields = ["student_id", "user_name", "password",
-                  "school_zone", "profile", "qq"]
+                  "school_zone", "profile", "email"]
         extra_kwargs = {
-            "student_id": {"required": True},
-            "user_name": {"required": True},
-            "password": {"required": True},
-            "school_zone": {"required": True},
-            "qq": {"required": True}
+            "email": {"required": True}
         }
 
     def validate_student_id(self, value):
@@ -49,12 +45,12 @@ class RegisterSerializer(ModelSerializer):
             raise serializers.ValidationError("选项不合法")
         return value
 
-    def validate_qq(self, value):
-        pattern = re.compile(r"^[1-9][0-9]{4,}$")
+    def validate_email(self, value):
+        pattern = re.compile(r'([A-Za-z0-9]+[.-_])*[A-Za-z0-9]+@[A-Za-z0-9-]+(\.[A-Z|a-z]{2,})+')
         if pattern.match(value):
             return value
         else:
-            raise serializers.ValidationError("qq格式不正确")
+            raise serializers.ValidationError("邮箱格式不正确")
 
 
 class UserInfoSerializer(ModelSerializer):
@@ -67,7 +63,7 @@ class UserInfoSerializer(ModelSerializer):
     class Meta:
         model = UserInfo
         fields = ["id", "student_id", "user_name", "avatar",
-                  "school_zone", "user_type", "profile", "qq", "message_num", "txn_statistics",
+                  "school_zone", "user_type", "profile", "email", "message_num", "txn_statistics",
                   "commuca_statistics"]
 
     def get_message_num(self, row):
@@ -108,7 +104,7 @@ class GoodSerializer(ModelSerializer):
         result["user_name"] = row.seller.user_name
         result["school_zone"] = row.seller.get_school_zone_display()
         result["avatar"] = row.seller.avatar
-        result["qq"] = row.seller.qq
+        result["email"] = row.seller.email
         return result
 
     def get_goodsInfo(self, row):

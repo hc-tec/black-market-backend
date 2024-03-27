@@ -37,7 +37,7 @@ class UserInfo(models.Model):
     school_zone = models.IntegerField(choices=SCHOOL_ZONE, default=1, verbose_name="校区")
     user_type = models.IntegerField(choices=USER_TYPE, default=1, verbose_name="用户类型")
     profile = models.CharField(max_length=200, verbose_name="个人简介", null=True, blank=True)
-    qq = models.CharField(max_length=16, verbose_name="QQ", null=False, blank=False)
+    email = models.CharField(max_length=128, verbose_name="邮箱",unique=True, null=False, blank=False, default="error")
     uonline = models.BooleanField(default=False, verbose_name="用户是否在线")
 
     def __str__(self):
