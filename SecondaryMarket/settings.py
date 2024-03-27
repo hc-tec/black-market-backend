@@ -249,9 +249,3 @@ django.setup()
 
 
 
-# 通过环境变量传递（作用于全局，优先级最低）
-os.environ["QIANFAN_ACCESS_KEY"] = "ALTAKYXfMqD73nK78A3BjH1f3I"
-os.environ["QIANFAN_SECRET_KEY"] = "128f38da2fce4a4a8bbfab806a253d98"
-
-os.environ["QIANFAN_AK"] = "meF3YT1H8JfIkpkz7V6daAjz"
-os.environ["QIANFAN_SK"] = "CIypbmJoB7SxuNDo8w8J6k7xg40BooQL"
